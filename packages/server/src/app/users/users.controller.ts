@@ -23,7 +23,7 @@ class UsersController extends Controller {
         const { username } = body;
         const user = createUser(username);
         this._connectedUsers.addUser(user.id, user);
-        response.send(`${user.id} has joined as ${user.username}`);
+        response.send(user);
     }
 
     private _getUserByUserId(request: Request, response: Response): void {
