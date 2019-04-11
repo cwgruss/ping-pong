@@ -1,0 +1,12 @@
+/**
+ *  Prevent text selection
+ *  
+ *  Summary:
+ *  The user-select property specifies whether the text of an element can be selected.
+ */
+@mixin user-select($value) {
+    -webkit-user-select: $value;
+    -moz-user-select: $value;
+    -ms-user-select: $value;
+    user-select: $value;
+}

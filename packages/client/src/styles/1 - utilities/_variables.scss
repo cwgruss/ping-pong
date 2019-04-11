@@ -1,8 +1,8 @@
 /* ==============================
-   1. VARIABLES 
+   1. Colors 
    ============================== */
 
-   /* COLORS
+   /* GRAYS
       -  : 
    */
    $white: #FFF !default;
@@ -32,3 +32,15 @@
   ),
   $grays
 );
+
+
+/* ==============================
+   2. SPACING
+   ============================== */
+$spacing : (
+  padding-x: 10px,
+  padding-y: 20px,
+  padding-outer-x: 40px,
+  padding-outer-y: 30px
+);
+

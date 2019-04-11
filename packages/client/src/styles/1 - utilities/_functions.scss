@@ -1,0 +1,19 @@
+@import './variables';
+
+@function spacing($map, $key) {
+    $hasKey: map-has-key($map, $key);
+    @if $hasKey {
+        @return map-get($map, $key);
+    }
+    @warn $key ' does not exist in the $spacing map.';
+    @return null;
+}
+
+@function gray($key: '900') {
+    $hasKey: map-has-key($grays, $key);
+    @if $hasKey {
+        @return map-get($grays, $key);
+    }
+    @warn $key ' does not exist in the $grays map.';
+    @return null;
+}

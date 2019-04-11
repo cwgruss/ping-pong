@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    RouterModule
+    RouterModule,
+    PagesModule
   ],
   declarations: [
     AppComponent
