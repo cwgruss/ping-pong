@@ -14,6 +14,7 @@ class UsersController extends Controller {
 
     initializeRoutes(): void {
         this.router.post(this.path, this._createAUser.bind(this));
+        this.router.get(`${this.path}`, this._getAllUsers.bind(this));
         this.router.get(`${this.path}/:id`, this._getUserByUserId.bind(this));
     }
 
@@ -32,6 +33,11 @@ class UsersController extends Controller {
             const user = this._connectedUsers.getUser(id);
             response.send(user);
         }
+    }
+
+    private _getAllUsers(request: Request, response: Response): void {
+        const users = this._connectedUsers.getAllUsers();
+        response.send(users);
     }
 }
 export default UsersController;

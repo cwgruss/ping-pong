@@ -26,6 +26,10 @@ export class Users<T extends User> {
         return undefined;
     }
 
+    getAllUsers(): T[] {
+        return Array.from(this._users.values());
+    }
+
     removeUser(userId: string): T | undefined {
         let user = undefined;
         if(this.hasUser(userId)) {
