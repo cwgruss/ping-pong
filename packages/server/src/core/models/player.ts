@@ -11,7 +11,7 @@ export class Player extends User {
     }
 
     constructor(id?: string) {
-        super(id);
+        super({ userId: id});
         this._isPlaying = false;
     }
 

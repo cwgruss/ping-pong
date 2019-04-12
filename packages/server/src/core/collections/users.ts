@@ -27,7 +27,8 @@ export class Users<T extends User> {
     }
 
     getAllUsers(): T[] {
-        return Array.from(this._users.values());
+        const users = Array.from(this._users.values()).map(user => user.toJSON());
+        return users;
     }
 
     removeUser(userId: string): T | undefined {

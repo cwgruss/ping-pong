@@ -11,7 +11,7 @@ describe('User collection', () => {
 
     it('should be able to add new users', () => {
         const users = new Users();
-        const newUser = new User('John');
+        const newUser = new User({ username: 'John'});
         const userId = newUser.id;
         users.addUser(userId, newUser);
         expect(users).toBeDefined();
@@ -21,7 +21,7 @@ describe('User collection', () => {
 
     it('should be able to remove existing users', () => {
         const users = new Users();
-        const newUser = new User('John');
+        const newUser = new User({ username: 'John'});
         const userId = newUser.id;
         users.addUser(userId, newUser);
         users.removeUser(userId);

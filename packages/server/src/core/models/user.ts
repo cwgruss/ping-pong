@@ -26,11 +26,15 @@ export class User extends EventEmitter {
     }
     private _username: string = '';
 
-    constructor(
-        _userId?: string
+    constructor(params: {
+        userId?: string,
+        username?: string
+        }
     ) {
         super();
-        this._id = _userId || generateUUID();
+        const { userId, username } = params;
+        this._id = userId || generateUUID();
+        this._username = username || '';
     }
 
     onCreate(createCb: (user: User) => void): void {
@@ -41,6 +45,15 @@ export class User extends EventEmitter {
     onActivate(activateCb: (user: User) => void): void {
         this._activateCb = activateCb.bind(this, this);
         this.on('activate', this._activateCb);
+    }
+
+    toJSON(): any {
+        return {
+            'id': this._id,
+            'username': this.username,
+            'is-active': this.isActive,
+            'joined': this.joinTime
+        }
     }
 
     public activate(): void {

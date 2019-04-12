@@ -21,8 +21,11 @@ class UsersController extends Controller {
     private _createAUser(request: Request, response: Response): void {
         const body = request.body;
         const { username } = body;
+        console.log(body);
         const user = createUser(username);
-        this._connectedUsers.addUser(user.id, user);
+        console.log(user);
+        
+        this._connectedUsers.addUser(user.id, user);        
         response.send(user);
     }
 

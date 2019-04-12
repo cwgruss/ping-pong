@@ -3,8 +3,8 @@ import  express from "express";
 import { AppController } from "./app/app-controller";
 import SocketIO from "socket.io";
 import { createServer, Server } from "http";
-import { router } from "./app/routes";
 import bodyParser = require("body-parser");
+import cors = require("cors");
 
 export class PingPong {
   // Create a new express application instance
@@ -14,10 +14,21 @@ export class PingPong {
 
   constructor() {
     this._app = express();
+    this._cores();
     this._app.use(bodyParser.json()); // Parse JSON data
     this._server = createServer(this._app).listen(8081);
     this._io = SocketIO().listen(this._server);
     this._listen();
+  }
+
+  private _cores(): void {
+    //CORS Middleware
+    // const config =  {
+    //     origin: false,
+    //     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    // }
+    this._app.use(cors());
+    return;
   }
 
   private _listen(): void {    
@@ -29,7 +40,7 @@ export class PingPong {
       serverController.start();
     });
 
-    router(this._app, this._io, {});
+    // router(this._app, this._io, {});
   }
 
   getApplication(): express.Application {
